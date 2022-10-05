@@ -5,8 +5,8 @@ import java.util.Map;
 
 public class IsomorphicStrings {
     public boolean isIsomorphic(String s, String t) {
-        int[] sToT = new int[256];
-        int[] tToS = new int[256];
+        int[] sToT = new int[128];
+        int[] tToS = new int[128];
 
         for(int i = 0; i < s.length(); i++){
             char sChar = s.charAt(i);
