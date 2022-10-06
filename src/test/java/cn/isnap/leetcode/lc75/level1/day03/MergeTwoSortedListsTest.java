@@ -1,9 +1,8 @@
 package cn.isnap.leetcode.lc75.level1.day03;
 
+import cn.isnap.leetcode.ListNode;
 import org.junit.Assert;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class MergeTwoSortedListsTest {
 

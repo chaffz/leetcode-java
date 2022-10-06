@@ -1,5 +1,7 @@
 package cn.isnap.leetcode.lc75.level1.day03;
 
+import cn.isnap.leetcode.ListNode;
+
 public class MergeTwoSortedLists {
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
         if (list1 == null) return list2;

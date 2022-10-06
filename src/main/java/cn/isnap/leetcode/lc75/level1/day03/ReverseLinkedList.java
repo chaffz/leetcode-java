@@ -1,5 +1,7 @@
 package cn.isnap.leetcode.lc75.level1.day03;
 
+import cn.isnap.leetcode.ListNode;
+
 public class ReverseLinkedList {
     public ListNode reverseList(ListNode head) {
         ListNode dummy = new ListNode(), tmp = null;

@@ -1,4 +1,4 @@
-package cn.isnap.leetcode.lc75.level1.day03;
+package cn.isnap.leetcode;
 
 public class ListNode {
     public int val;
