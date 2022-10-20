@@ -5,20 +5,13 @@ import cn.isnap.leetcode.ListNode;
 public class PalindromeLinkedList {
     public boolean isPalindrome(ListNode head) {
         ListNode fast = head, slow = head;
-        boolean odd = false;
-
-        while (fast != null) {
-            if (fast.next == null) {
-                fast = null;
-                odd = true;
-            } else {
-                fast = fast.next.next;
-                slow = slow.next;
-            }
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
         }
 
         ListNode newHead = reverse(head, slow);
-        if (odd) slow = slow.next;
+        if (fast != null) slow = slow.next;
 
         while (slow != null) {
             if (newHead.val != slow.val) return false;
