@@ -6,25 +6,21 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class PathSumIII {
-    public int pathSum(TreeNode root, int target) {
-        Integer[] result = new Integer[]{0};
-        Map<Integer, Integer> map = new HashMap<>();
-        map.put(0, 1);
-        pathSum(result, root, target, 0, map);
-        return result[0];
+    public int pathSum(TreeNode root, int targetSum) {
+        Map<Long, Integer> map = new HashMap<>();
+        map.put(0L, 1);
+        return helper(root, (long) targetSum, 0, map);
     }
 
-    private void pathSum(Integer[] result, TreeNode node, int target, int current, Map<Integer, Integer> map) {
-        if (node == null)
-            return;
-
-        current += node.val;
-        int key = current - target;
-        result[0] += map.getOrDefault(key, 0);
-
-        map.put(current, map.getOrDefault(current, 0) + 1);
-        pathSum(result, node.left, target, current, map);
-        pathSum(result, node.right, target, current, map);
-        map.put(current, map.get(current) - 1);
+    private int helper(TreeNode node, long targetSum, long preSum, Map<Long, Integer> map) {
+        if (node == null) {
+            return 0;
+        }
+        preSum += node.val;
+        int res = map.getOrDefault(preSum - targetSum, 0);
+        map.put(preSum, map.getOrDefault(preSum, 0) + 1);
+        res += helper(node.left, targetSum, preSum, map) + helper(node.right, targetSum, preSum, map);
+        map.put(preSum, map.get(preSum) - 1);
+        return res;
     }
 }
