@@ -1,12 +1,11 @@
 package cn.isnap.leetcode.lc75.level1.day13;
 
 import java.util.HashMap;
-import java.util.Map;
 
 public class TwoSum {
     public int[] twoSum(int[] nums, int target) {
         int[] ret = new int[2];
-        Map<Integer, Integer> opt = new HashMap<>();
+        HashMap<Integer, Integer> opt = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
             int key = target - nums[i];
             if (opt.containsKey(key)) {
