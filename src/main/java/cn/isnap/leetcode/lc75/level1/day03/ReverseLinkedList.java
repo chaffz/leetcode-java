@@ -4,14 +4,14 @@ import cn.isnap.leetcode.ListNode;
 
 public class ReverseLinkedList {
     public ListNode reverseList(ListNode head) {
-        ListNode dummy = new ListNode(), tmp = null;
+        ListNode newHead = null, cur;
         while (head != null) {
-            tmp = dummy.next;
-            dummy.next = head;
-            head = head.next;
-            dummy.next.next = tmp;
+            cur = head.next;
+            head.next = newHead;
+            newHead = head;
+            head = cur;
         }
 
-        return dummy.next;
+        return newHead;
     }
 }
