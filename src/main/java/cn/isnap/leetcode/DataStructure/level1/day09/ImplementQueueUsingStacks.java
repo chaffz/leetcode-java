@@ -1,15 +1,18 @@
-package cn.isnap.leetcode.lc75.level2.day16;
+package cn.isnap.leetcode.DataStructure.level1.day09;
 
 import java.util.Stack;
 
-public class MyQueue {
+/**
+ * @see cn.isnap.leetcode.lc75.level2.day16.MyQueue
+ */
+public class ImplementQueueUsingStacks {
     Stack<Integer> push = new Stack<>();
     Stack<Integer> pop = new Stack<>();
 
-    public MyQueue() {}
+    public ImplementQueueUsingStacks() {}
 
     public void push(int x) {
-        while (!pop.isEmpty()) {
+        while (!empty()) {
             push.push(pop.pop());
         }
         push.push(x);
