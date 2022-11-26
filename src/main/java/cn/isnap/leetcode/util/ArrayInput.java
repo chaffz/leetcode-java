@@ -10,4 +10,9 @@ public class ArrayInput {
         List<int[]> data = JSON.parseObject(in, new TypeReference<List<int[]>>(){});
         return data.toArray(new int[data.size()][]);
     }
+
+    public static int[] asArray(String in) {
+        List<Integer> data = JSON.parseObject(in, new TypeReference<List<Integer>>(){});
+        return data.stream().mapToInt(Integer::intValue).toArray();
+    }
 }
