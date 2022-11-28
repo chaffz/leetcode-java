@@ -15,4 +15,9 @@ public class ArrayInput {
         List<Integer> data = JSON.parseObject(in, new TypeReference<List<Integer>>(){});
         return data.stream().mapToInt(Integer::intValue).toArray();
     }
+
+    public static String[] asStringArray(String in) {
+        List<String> data = JSON.parseObject(in, new TypeReference<List<String>>(){});
+        return data.toArray(new String[0]);
+    }
 }
