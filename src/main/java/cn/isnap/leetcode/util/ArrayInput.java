@@ -1,6 +1,7 @@
 package cn.isnap.leetcode.util;
 
 import cn.isnap.leetcode.ListNode;
+import cn.isnap.leetcode.TreeNode;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
 
