@@ -2,14 +2,13 @@ package cn.isnap.leetcode.DataStructure.level2.day18;
 
 import cn.isnap.leetcode.TreeNode;
 
-import java.util.StringJoiner;
-
 public class SerializeAndDeserializeBinaryTree {
     // Encodes a tree to a single string.
     public String serialize(TreeNode root) {
-        StringJoiner joiner = new StringJoiner(",");
-        serialize(joiner, root);
-        return joiner.toString();
+        StringBuilder builder = new StringBuilder();
+        serialize(builder, root);
+        builder.deleteCharAt(builder.length() - 1);
+        return builder.toString();
     }
 
     // Decodes your encoded data to tree.
@@ -32,12 +31,12 @@ public class SerializeAndDeserializeBinaryTree {
         return node;
     }
 
-    private void serialize(StringJoiner builder, TreeNode node) {
+    private void serialize(StringBuilder builder, TreeNode node) {
         if (node == null) {
-            builder.add("N");
+            builder.append("N").append(",");
             return;
         }
-        builder.add(String.valueOf(node.val));
+        builder.append(String.valueOf(node.val)).append(",");
         serialize(builder, node.left);
         serialize(builder, node.right);
     }
