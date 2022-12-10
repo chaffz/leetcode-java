@@ -25,6 +25,12 @@ public class ArrayInput {
         return data.toArray(new String[0]);
     }
 
+    public static List<List<Integer>> as2DList(String in) {
+        List<List<Integer>> data = JSON.parseObject(in, new TypeReference<List<List<Integer>>>() {
+        });
+        return data;
+    }
+
     public static ListNode asListNode(String in) {
         List<Integer> data = JSON.parseObject(in, new TypeReference<List<Integer>>() {
         });
