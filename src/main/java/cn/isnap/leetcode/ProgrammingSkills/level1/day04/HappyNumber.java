@@ -2,20 +2,16 @@ package cn.isnap.leetcode.ProgrammingSkills.level1.day04;
 
 public class HappyNumber {
     public boolean isHappy(int n) {
-        if (n == 1) return true;
+        if (n < 9) {
+            return n == 1 || n == 7;
+        }
 
         int remain = 0;
-        do {
-            remain = 0;
-            int r = 0;
-            while (n > 0) {
-                r = n % 10;
-                remain = remain + (r * r);
-                n = n / 10;
-            }
-            n = remain;
-        } while (remain > 9);
+        while (n > 0) {
+            remain += Math.pow(n % 10, 2);
+            n /= 10;
+        }
 
-        return remain == 1 || remain == 7;
+        return isHappy(remain);
     }
 }
