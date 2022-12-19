@@ -1,4 +1,4 @@
-package cn.isnap.leetcode.ProgrammingSkills.level2;
+package cn.isnap.leetcode.ProgrammingSkills.level1.day07;
 
 public class MatrixDiagonalSum {
     public int diagonalSum(int[][] mat) {

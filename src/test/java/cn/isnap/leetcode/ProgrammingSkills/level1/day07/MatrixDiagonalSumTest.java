@@ -1,10 +1,9 @@
-package cn.isnap.leetcode.ProgrammingSkills.level2;
+package cn.isnap.leetcode.ProgrammingSkills.level1.day07;
 
+import cn.isnap.leetcode.ProgrammingSkills.level1.day07.MatrixDiagonalSum;
 import cn.isnap.leetcode.util.ArrayInput;
 import org.junit.Assert;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class MatrixDiagonalSumTest {
     MatrixDiagonalSum matrixDiagonalSum = new MatrixDiagonalSum();
