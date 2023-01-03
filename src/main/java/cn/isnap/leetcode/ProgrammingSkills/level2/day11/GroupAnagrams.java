@@ -1,22 +1,17 @@
 package cn.isnap.leetcode.ProgrammingSkills.level2.day11;
 
 import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Stream;
 
 public class GroupAnagrams {
     public List<List<String>> groupAnagrams(String[] strs) {
         Map<String, List<String>> caches = new HashMap<>();
-        for (String str : strs) {
-            encodeAnagram(caches, str);
-        }
+        Stream.of(strs).forEach(s -> {
+            char[] chars = s.toCharArray();
+            Arrays.sort(chars);
+            String key = new String(chars);
+            caches.computeIfAbsent(key, val -> new ArrayList<>()).add(s);
+        });
         return new ArrayList<>(caches.values());
-    }
-
-    private void encodeAnagram(Map<String, List<String>> caches, String in) {
-        char[] chars = in.toCharArray();
-        Arrays.sort(chars);
-        String key = new String(chars);
-        caches.putIfAbsent(key, new ArrayList<>());
-        caches.get(key).add(in);
     }
 }
