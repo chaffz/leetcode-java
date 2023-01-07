@@ -17,5 +17,8 @@ public class AddTwoNumbersIITest {
         ListNode l2 = ArrayInput.asListNode("[5,6,4]");
 
         Assert.assertEquals(addTwoNumbersII.addTwoNumbers(l1, l2).toString(), "7,8,0,7,");
+        Assert.assertEquals(addTwoNumbersII.addTwoNumbers(
+                ArrayInput.asListNode("[5]"),
+                ArrayInput.asListNode("[5]")).toString(), "1,0,");
     }
 }
