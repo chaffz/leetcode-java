@@ -5,19 +5,16 @@ import cn.isnap.leetcode.ListNode;
 public class AddTwoNumbersII {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode reversed1 = new ListNode(), reversed2 = new ListNode();
-        boolean[] loop = new boolean[]{true};
-        while (loop[0]) {
-            loop[0] = false;
-            l1 = reverse(l1, reversed1, loop);
-            l2 = reverse(l2, reversed2, loop);
+        while (l1 != null || l2 != null) {
+            l1 = reverse(l1, reversed1);
+            l2 = reverse(l2, reversed2);
         }
 
-        loop[0] = true;
-        int over = 0;
         ListNode dummy = new ListNode();
+        boolean loop = true;
+        int over = 0;
         ListNode cur1 = reversed1.next, cur2 = reversed2.next;
-        while (loop[0]) {
-            loop[0] = false;
+        while (cur1 != null || cur2 != null || over > 0) {
             if (cur1 != null) {
                 over += cur1.val;
                 cur1 = cur1.next;
@@ -27,18 +24,13 @@ public class AddTwoNumbersII {
                 cur2 = cur2.next;
             }
             over = getOver(dummy, over);
-
-            if (cur1 != null || cur2 != null || over > 0) {
-                loop[0] = true;
-            }
         }
 
         return dummy.next;
     }
 
-    private ListNode reverse(ListNode l1, ListNode reversed1, boolean[] loop) {
+    private ListNode reverse(ListNode l1, ListNode reversed1) {
         if (l1 != null) {
-            loop[0] = true;
             ListNode next = l1.next;
             l1.next = reversed1.next;
             reversed1.next = l1;
