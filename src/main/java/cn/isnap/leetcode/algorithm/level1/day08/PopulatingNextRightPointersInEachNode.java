@@ -25,18 +25,12 @@ public class PopulatingNextRightPointersInEachNode {
     }
 
     public Node connect(Node root) {
-        Map<Integer, Node> tail = new HashMap<>();
-        connect(root, tail, 0);
+        if (root == null) return null;
+        if (root.left != null) root.left.next = root.right;
+        if (root.right != null) root.right.next = root.next != null ? root.next.left : null;
+        connect(root.left);
+        connect(root.right);
+
         return root;
-    }
-
-    private void connect(Node node, Map<Integer, Node> tail, int level) {
-        if (node == null) return;
-
-        Node t = tail.getOrDefault(level, new Node());
-        t.next = node;
-        tail.put(level, node);
-        connect(node.left, tail, level + 1);
-        connect(node.right, tail, level + 1);
     }
 }
