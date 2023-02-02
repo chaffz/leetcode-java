@@ -6,11 +6,20 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ArrayInput {
     public static int[][] as2DArray(String in) {
         List<int[]> data = JSON.parseObject(in, new TypeReference<List<int[]>>(){});
         return data.toArray(new int[data.size()][]);
+    }
+
+    public static <T> T[][] as2DArrayEx(String in) {
+        return JSON.parseObject(in, new TypeReference<T[][]>(){});
+    }
+
+    public static char[][] as2DArrayChar(String in) {
+        return JSON.parseObject(in, new TypeReference<char[][]>(){});
     }
 
     public static int[] asArray(String in) {
