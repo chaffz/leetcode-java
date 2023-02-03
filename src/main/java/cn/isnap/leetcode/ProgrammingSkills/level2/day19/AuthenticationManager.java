@@ -4,23 +4,30 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class AuthenticationManager {
-    Map<String, Integer> tokens = new HashMap<>();
-    Integer timeToLive;
+    HashMap<String, Integer> tokens;
+    int timeToLive;
 
     public AuthenticationManager(int timeToLive) {
         this.timeToLive = timeToLive;
+        tokens = new HashMap<>();
     }
 
     public void generate(String tokenId, int currentTime) {
-        tokens.put(tokenId, currentTime + this.timeToLive);
+        tokens.put(tokenId, currentTime);
     }
 
     public void renew(String tokenId, int currentTime) {
-        if (tokens.getOrDefault(tokenId, 0) < currentTime) return;
-        tokens.put(tokenId, currentTime + this.timeToLive);
+        if(tokens.containsKey(tokenId) && tokens.get(tokenId) <= currentTime && tokens.get(tokenId) + timeToLive > currentTime) {
+            tokens.put(tokenId, currentTime);
+        }
     }
 
     public int countUnexpiredTokens(int currentTime) {
-        return (int) tokens.values().stream().filter(t -> t >= currentTime).count();
+        int count = 0;
+        for(Map.Entry<String, Integer> e : tokens.entrySet())
+            if(e.getValue() <= currentTime && currentTime < e.getValue() + timeToLive)
+                count++;
+
+        return count;
     }
 }
