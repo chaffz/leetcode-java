@@ -2,34 +2,42 @@ package cn.isnap.leetcode.algorithm.level2.day08;
 
 public class SurroundedRegions {
     public void solve(char[][] board) {
-        for (int i = 0; i < board.length; i++) {
-            solve(board, i, 0);
-            solve(board, i, board[0].length - 1);
+        if (board.length == 0 || board[0].length == 0) {
+            return;
         }
+        int m = board.length, n = board[0].length;
 
-        for(int j = 1; j < board[0].length - 1; j++){
-            solve(board, 0, j);
-            solve(board, board.length - 1, j);
+        for (int i = 0; i < m; i++) {
+            flush(board, i, 0);
+            flush(board, i, n - 1);
         }
-
-        for(int i = 0; i < board.length; i++){
-            for(int j = 0; j < board[0].length; j++){
-                if(board[i][j] == 'Y') board[i][j] = 'O';
-                else board[i][j] = 'X';
+        for (int j = 0; j < n; j++) {
+            flush(board, 0, j);
+            flush(board, m - 1, j);
+        }
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                flip(board, i, j);
             }
         }
     }
 
-    private void solve(char[][] board, int x, int y) {
-        if (x < 0 || y < 0 || x >= board.length || y >= board[x].length) return;
-        if (board[x][y] == 'X' || board[x][y] == 'Y') return;
-        board[x][y] = 'Y';
+    private void flush(char[][] board, int i, int j) {
+        if (i < 0 || i >= board.length || j < 0 || j >= board[0].length || board[i][j] != 'O') {
+            return;
+        }
+        board[i][j] = 0;
+        flush(board, i - 1, j);
+        flush(board, i + 1, j);
+        flush(board, i, j + 1);
+        flush(board, i, j - 1);
+    }
 
-        if (board[x][y] == 'O') {
-            solve(board, x + 1, y);
-            solve(board, x - 1, y);
-            solve(board, x, y + 1);
-            solve(board, x, y - 1);
+    private void flip(char[][] board, int i, int j) {
+        if (board[i][j] == 'O') {
+            board[i][j] = 'X';
+        } else if (board[i][j] == 0) {
+            board[i][j] = 'O';
         }
     }
 }
