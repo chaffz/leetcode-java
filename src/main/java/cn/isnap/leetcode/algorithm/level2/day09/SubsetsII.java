@@ -1,13 +1,11 @@
 package cn.isnap.leetcode.algorithm.level2.day09;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class SubsetsII {
     public List<List<Integer>> subsetsWithDup(int[] nums) {
+        Arrays.sort(nums);
         Set<List<Integer>> result = new HashSet<>();
         List<Integer> sub = new ArrayList<>();
         result.add(sub);
