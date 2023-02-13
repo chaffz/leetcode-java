@@ -1,6 +1,6 @@
 package cn.isnap.leetcode.algorithm.level2.day18;
 
-public class DeleteOperationForTwoStrings {
+public class EditDistance {
     public int minDistance(String word1, String word2) {
         char[] chars1 = word1.toCharArray();
         char[] chars2 = word2.toCharArray();
@@ -14,7 +14,7 @@ public class DeleteOperationForTwoStrings {
                 if (chars1[i - 1] == chars2[j - 1])
                     dp[i][j] = dp[i - 1][j - 1];
                 else
-                    dp[i][j] = Math.min(dp[i - 1][j], dp[i][j - 1]) + 1;
+                    dp[i][j] = Math.min(dp[i - 1][j - 1], Math.min(dp[i - 1][j], dp[i][j - 1])) + 1;
             }
         }
 

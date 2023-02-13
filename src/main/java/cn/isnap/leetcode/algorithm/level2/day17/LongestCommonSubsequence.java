@@ -1,4 +1,4 @@
-package cn.isnap.leetcode.algorithm.level2.day18;
+package cn.isnap.leetcode.algorithm.level2.day17;
 
 public class LongestCommonSubsequence {
     public int longestCommonSubsequence(String text1, String text2) {
