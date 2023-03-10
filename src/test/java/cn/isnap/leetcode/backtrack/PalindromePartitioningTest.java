@@ -1,7 +1,10 @@
 package cn.isnap.leetcode.backtrack;
 
+import com.alibaba.fastjson.JSON;
 import org.junit.Assert;
 import org.junit.Test;
+
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -10,7 +13,7 @@ public class PalindromePartitioningTest {
 
     @Test
     public void partition() {
-        Assert.assertEquals(partitioning.partition("aab").toString().replaceAll(" ", ""),
-                "[[\"a\",\"a\",\"b\"],[\"aa\",\"b\"]]");
+        List<List<String>> list = partitioning.partition("aab");
+        Assert.assertEquals(JSON.toJSONString(list), "[[\"a\",\"a\",\"b\"],[\"aa\",\"b\"]]");
     }
 }
