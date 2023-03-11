@@ -1,30 +1,29 @@
 package cn.isnap.leetcode.backtrack;
 
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 public class CombinationSumIII {
     public List<List<Integer>> combinationSum3(int k, int n) {
-        Set<List<Integer>> result = new HashSet<>();
-        Set<Integer> cur = new HashSet<>();
-        combinationSum3(result, cur, k, n);
+        List<List<Integer>> result = new LinkedList<>();
+        for (int i = 1; i <= 9; i++) {
+            combinationSum3(result, new LinkedList<>(), i, k, n);
+        }
         return new ArrayList<>(result);
     }
 
-    private void combinationSum3(Set<List<Integer>> result, Set<Integer> cur, int k, int n) {
-        if (n < 0) return;
+    private void combinationSum3(List<List<Integer>> result, List<Integer> cur, int i, int k, int n) {
         if (n == 0 && k == 0) {
             result.add(new ArrayList<>(cur));
             return;
-        }
+        } if (n < 0 || k < 0) return;
 
-        for (int i = 1; i <= 9; i++) {
-            if (cur.contains(i)) continue;
-            cur.add(i);
-            combinationSum3(result, cur, k - 1, n - i);
-            cur.remove(i);
+        cur.add(i);
+        for (int j = i + 1; j <= 10; j++) {
+            combinationSum3(result, cur, j, k - 1, n - i);
+            if (j > n) break;
         }
+        cur.remove(cur.size() - 1);
     }
 }
