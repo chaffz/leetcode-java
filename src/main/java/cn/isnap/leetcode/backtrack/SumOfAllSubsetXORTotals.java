@@ -1,30 +1,17 @@
 package cn.isnap.leetcode.backtrack;
 
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
 public class SumOfAllSubsetXORTotals {
-  int result = 0;
   public int subsetXORSum(int[] nums) {
-    List<Integer> path = new LinkedList<>();
-    subsetXORSum(path, nums, 0);
-    return result;
+    return subsetXORSum(0, nums, 0);
   }
 
-  private void subsetXORSum(List<Integer> path, int[] nums, int start) {
+  private int subsetXORSum(int sum, int[] nums, int start) {
     if (start >= nums.length) {
-      int xor = 0;
-      for (final Integer integer : path) {
-        xor ^= integer;
-      }
-      result += xor;
-      return;
+      return sum;
     }
-    subsetXORSum(path, nums, start + 1);
-    path.add(nums[start]);
-    subsetXORSum(path, nums, start + 1);
-    path.remove(path.size() - 1);
+
+    int pick = subsetXORSum(sum ^ nums[start], nums, start + 1);
+    int notPick = subsetXORSum(sum, nums, start + 1);
+    return pick + notPick;
   }
 }
