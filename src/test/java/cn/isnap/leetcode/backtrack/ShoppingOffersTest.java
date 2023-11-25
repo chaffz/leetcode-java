@@ -18,8 +18,8 @@ public class ShoppingOffersTest {
       List<Integer> price = Arrays.stream(ArrayInput.asArray("[2,5]")).boxed().collect(Collectors.toList());
       List<Integer> needs = Arrays.stream(ArrayInput.asArray("[3,2]")).boxed().collect(Collectors.toList());
       List<List<Integer>> special = ArrayInput.as2DList("[[3,0,5],[1,2,10]]");
-//      int offers = shoppingOffers.shoppingOffers(price, special, needs);
-//      Assert.assertEquals(offers, 14);
+      int offers = shoppingOffers.shoppingOffers(price, special, needs);
+      Assert.assertEquals(offers, 14);
     }
 
     /*
@@ -35,7 +35,7 @@ public class ShoppingOffersTest {
       List<Integer> needs = Arrays.stream(ArrayInput.asArray("[10,10]")).boxed().collect(Collectors.toList());
       List<List<Integer>> special = ArrayInput.as2DList("[[1,1,1],[1,1,2],[1,1,3],[1,1,4],[1,1,5],[1,1,6],[1,1,7],[1,1,8],[1,1,9],[1,1,10],[1,1,11],[1,1,12],[1,1,13],[1,1,14],[1,1,15]]");
       int offers = shoppingOffers.shoppingOffers(price, special, needs);
-      Assert.assertEquals(offers, 14);
+      Assert.assertEquals(offers, 10);
     }
   }
 }
