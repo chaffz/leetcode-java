@@ -3,8 +3,6 @@ package cn.isnap.leetcode.backtrack;
 import org.junit.Assert;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 public class AdditiveNumberTest {
   AdditiveNumber additiveNumber = new AdditiveNumber();
 

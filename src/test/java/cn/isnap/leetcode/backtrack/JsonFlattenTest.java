@@ -1,16 +1,10 @@
 package cn.isnap.leetcode.backtrack;
 
-import com.alibaba.fastjson.JSON;
-import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.annotation.JacksonStdImpl;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class JsonFlattenTest {
 
